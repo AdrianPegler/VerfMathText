@@ -19,6 +19,30 @@
 \usepackage{xcolor}
 \usepackage{todonotes}
 
+\usepackage{amsmath}
+
+\let\proof\relax
+\let\endproof\relax
+\usepackage{amsthm}
+\theoremstyle{plain}
+\spnewtheorem{thm}{Theorem}[section]{\bfseries}{\itshape} % reset theorem numbering for each section
+\numberwithin{thm}{section}
+
+\theoremstyle{definition}
+\spnewtheorem{defn}[thm]{Definition}{\bfseries}{\itshape} % definition numbers are dependent on theorem numbers
+\spnewtheorem{exmp}[thm]{Beispiel}{\bfseries}{\itshape} % same for example numbers
+\spnewtheorem{bem}[thm]{Bemerkung}{\bfseries}{\itshape}
+\spnewtheorem{lemdef}[thm]{Lemma und Definition}{\bfseries}{\itshape}
+\spnewtheorem{lem}[thm]{Lemma}{\bfseries}{\itshape}
+\spnewtheorem{ann}{Annahme}{\bfseries}{\itshape}
+
+\newcommand{\thmbox}[3]{
+  \begin{#1}
+    \textbf{#2}\\
+    #3
+  \end{#1}
+}
+
 %\usepackage{nameref}
 %\usepackage{varioref}
 
@@ -81,42 +105,15 @@
   This is my abstract.
 \end{abstract}
 
-\section{Introduction}
+%\section{Introduction}
 
-  This is my introduction. \textcite{Shaw2003WritingGoodSoftwareEngineeringResearchPapersMinitutorial} wrote a paper with hints on how to write good software engineering research papers. By the way, this was an example for using the \textit{biblatex} command \texttt{\textbackslash{}textcite\{\}}.
+\include{faserbundel}
 
-  \autoref{sec:anotherSection} presents everything one must know. 
-  The conclusions follow in Section~\ref{sec:conclusions}.
+\include{vektorbundel}
 
-\section{Another Section}\label{sec:anotherSection}
+\section{Conclusions}
+\label{sec:conclusions}
 
-  \textit{AspectJ} can be used to weave cross-cutting concerns into Java programs \cite{AspectJ2007}. 
-  By the way, this was an example for using the \textit{biblatex} command \texttt{\textbackslash{}cite\{\}}.
-
-  We will now demonstrate how to use subfigures (see Figure~\ref{fig:subfig}). \autoref{fig:circle} shows a circle.
-  A star is displayed in \autoref{fig:star}.
-
-  \begin{figure}
-    \begin{subfigure}[l]{.49\textwidth}
-	  \centering
-      \includegraphics[width=0.3\textwidth]{template_circle.pdf}
-      \caption{left figure.}
-      \label{fig:circle}
-	\end{subfigure}
-	\hfill
-    \begin{subfigure}[c]{.49\textwidth}
-      \centering
-      \includegraphics[width=0.3\textwidth]{template_star.pdf}
-      \caption{right figure.}
-      \label{fig:star}
-	\end{subfigure}
-    \caption{A circle (a) and a star (b). Note that any caption ends with a full stop character.}
-    \label{fig:subfig}
-  \end{figure}
-
-\section{Conclusions}\label{sec:conclusions}
-
-  These are my conclusions.
 
 \printbibliography
 
