@@ -1,6 +1,27 @@
 \section{Faserbündel}
 \label{sec:faserbundel}
 
-\thmbox{defn}{Faserbündel}{Hier folgt die Definition}
+\thmbox{defn}{Faserbündel}{Seien $E$, $B$, $F$ \difman, $\pi \colon E \to B$ eine glatte surjektive Funktion.\\
+Falls es um jeden Punkt $x \in B$ eine Umgebung $U$ sowie einen Diffeomorphismus $\Phi_U \colon \pi^{-1}(U) \to U \times F$ gibt, sodass 
+\begin{equation}
+\pi_U \circ \Phi_U = \pi
+\label{eq:kommut}
+\end{equation}
+gilt, nennen wir $\left( E, \pi, B \right)$ \textbf{Faserbündel} mit \textbf{typischer Faser} $F$. Nach \autoref{eq:kommut} kommutiert also folgendes Schema:
+
+\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2.8cm, semithick]
+  \tikzstyle{every state}=[draw=none]
+
+  \node[state] (A)			{$\pi^{-1}(U) \subset E$};
+  \node[state] (B) [below right of=A]	{$U \subset B$};
+  \node[state] (C) [above right of=B] 	{$U \times F$};
+
+  \path (A) edge              node {$\Phi_U$} (C)
+	    edge              node {$\pi$} (B)
+        (C) edge              node {$\pi_U$} (B);
+\end{tikzpicture}\\
+$B$ heißt \textbf{Basisraum} und $E$ \textbf{Totalraum} des Faserbündels. Die Abbildung $\Phi_U$ wird auch \textbf{lokale Trivialisierung} oder \textbf{Bündelkarte} genannt.
+Mit $E_x := \pi^{-1}(x)$  bezeichnen wir für alle $x \in B$ die \textbf{Faser über $x$}. }
+
 
 \thmbox{bem}{}{Muhaha}

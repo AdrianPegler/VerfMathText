@@ -19,6 +19,11 @@
 \usepackage{xcolor}
 \usepackage{todonotes}
 
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{verbatim}
+
 \usepackage{amsmath}
 
 \let\proof\relax
@@ -42,6 +47,8 @@
     #3
   \end{#1}
 }
+
+\newcommand{\difman}{Differenzierbare Mannigfaltigkeiten}
 
 %\usepackage{nameref}
 %\usepackage{varioref}
@@ -107,12 +114,12 @@
 
 %\section{Introduction}
 
-\include{faserbundel}
+\input{faserbundel}
 
-\include{vektorbundel}
+\input{vektorbundel}
 
-\section{Conclusions}
-\label{sec:conclusions}
+% \section{Conclusions}
+% \label{sec:conclusions}
 
 
 \printbibliography
