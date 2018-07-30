@@ -1,0 +1,123 @@
+\documentclass{llncs}
+
+\usepackage[utf8]{inputenc}
+
+%\usepackage{fixltx2e}
+%\usepackage[T1]{fontenc}
+%\usepackage{textcomp}
+\usepackage[english]{babel}		% english or german
+
+% references
+\usepackage[backend=biber,isbn=false,doi=false]{biblatex}
+\addbibresource{template.bib}
+	%\usepackage[numbers]{natbib}
+	%\bibliographystyle{abbrvnat}
+	%\makeatletter
+	%	\renewcommand\bibsection{\section*{\refname\@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}}
+	%\makeatother
+
+\usepackage{xcolor}
+\usepackage{todonotes}
+
+%\usepackage{nameref}
+%\usepackage{varioref}
+
+% Figures, graphics etc.
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
+\usepackage{subcaption}
+\usepackage{listings}
+\lstset{
+	escapechar=\%, 
+	basicstyle=\footnotesize,
+	frame=tb, 
+	breaklines=true,
+	numbers=left,
+	numbersep=6pt,
+	tabsize=3,
+}
+
+
+\usepackage[
+	pdfborder={0 0 0},
+	pdfusetitle,
+	colorlinks=false,
+	bookmarksnumbered=true,
+	bookmarksopenlevel=1,
+	bookmarksopen=true,
+	bookmarksdepth=3
+]{hyperref}
+
+% llncs hyperref fix
+\makeatletter
+\providecommand*{\toclevel@author}{0}
+\providecommand*{\toclevel@title}{0}
+\makeatother
+
+\addto\extrasenglish{%
+	\renewcommand{\sectionautorefname}{Section}%
+}
+
+\let\subsectionautorefname\sectionautorefname
+\let\subsubsectionautorefname\sectionautorefname
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BEGIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{My Title}
+\subtitle{My (optional) Subtitle}
+\author{The Author}
+\institute{Kiel University\\Department of Computer Science\\24098 Kiel, Germany}
+
+\begin{document}
+
+\maketitle
+\begin{center}
+	\today
+\end{center}
+
+\begin{abstract}
+  This is my abstract.
+\end{abstract}
+
+\section{Introduction}
+
+  This is my introduction. \textcite{Shaw2003WritingGoodSoftwareEngineeringResearchPapersMinitutorial} wrote a paper with hints on how to write good software engineering research papers. By the way, this was an example for using the \textit{biblatex} command \texttt{\textbackslash{}textcite\{\}}.
+
+  \autoref{sec:anotherSection} presents everything one must know. 
+  The conclusions follow in Section~\ref{sec:conclusions}.
+
+\section{Another Section}\label{sec:anotherSection}
+
+  \textit{AspectJ} can be used to weave cross-cutting concerns into Java programs \cite{AspectJ2007}. 
+  By the way, this was an example for using the \textit{biblatex} command \texttt{\textbackslash{}cite\{\}}.
+
+  We will now demonstrate how to use subfigures (see Figure~\ref{fig:subfig}). \autoref{fig:circle} shows a circle.
+  A star is displayed in \autoref{fig:star}.
+
+  \begin{figure}
+    \begin{subfigure}[l]{.49\textwidth}
+	  \centering
+      \includegraphics[width=0.3\textwidth]{template_circle.pdf}
+      \caption{left figure.}
+      \label{fig:circle}
+	\end{subfigure}
+	\hfill
+    \begin{subfigure}[c]{.49\textwidth}
+      \centering
+      \includegraphics[width=0.3\textwidth]{template_star.pdf}
+      \caption{right figure.}
+      \label{fig:star}
+	\end{subfigure}
+    \caption{A circle (a) and a star (b). Note that any caption ends with a full stop character.}
+    \label{fig:subfig}
+  \end{figure}
+
+\section{Conclusions}\label{sec:conclusions}
+
+  These are my conclusions.
+
+\printbibliography
+
+\end{document}
