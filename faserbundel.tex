@@ -8,20 +8,103 @@ Falls es um jeden Punkt $x \in B$ eine Umgebung $U$ sowie einen Diffeomorphismus
 \label{eq:kommut}
 \end{equation}
 gilt, nennen wir $\left( E, \pi, B \right)$ \textbf{Faserbündel} mit \textbf{typischer Faser} $F$. Nach \autoref{eq:kommut} kommutiert also folgendes Schema:
+\begin{center}
+  \begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2.8cm, semithick]
+    \tikzstyle{every state}=[draw=none]
 
-\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2.8cm, semithick]
-  \tikzstyle{every state}=[draw=none]
+    \node[state] (A)			{$\pi^{-1}(U) \subset E$};
+    \node[state] (B) [below right of=A]	{$U \subset B$};
+    \node[state] (C) [above right of=B] 	{$U \times F$};
 
-  \node[state] (A)			{$\pi^{-1}(U) \subset E$};
-  \node[state] (B) [below right of=A]	{$U \subset B$};
-  \node[state] (C) [above right of=B] 	{$U \times F$};
-
-  \path (A) edge              node {$\Phi_U$} (C)
-	    edge              node {$\pi$} (B)
-        (C) edge              node {$\pi_U$} (B);
-\end{tikzpicture}\\
+    \path (A) edge              node {$\Phi_U$} (C)
+	      edge              node {$\pi$} (B)
+	  (C) edge              node {$\pi_U$} (B);
+  \end{tikzpicture}
+\end{center}%\\
 $B$ heißt \textbf{Basisraum} und $E$ \textbf{Totalraum} des Faserbündels. Die Abbildung $\Phi_U$ wird auch \textbf{lokale Trivialisierung} oder \textbf{Bündelkarte} genannt.
-Mit $E_x := \pi^{-1}(x)$  bezeichnen wir für alle $x \in B$ die \textbf{Faser über $x$}. }
+Mit $E_x := \pi^{-1}(x)$  bezeichnen wir für alle $x \in B$ die \textbf{Faser} über $x$. }
 
+\begin{figure}[t]
+  \begin{tikzpicture}[MyPersp]%,font=\large]
+    % the base circle is the unit circle in plane Oxy
+    \def\h{1.5}% Heigth of the ellipse center (on the axis of the cylinder)
+    \def\offa{0.5}% 
+    \def\offb{2.6}%
+    \def\offc{1.4}%
+    \def\offd{3}%
 
-\thmbox{bem}{}{Muhaha}
+    %%%%%%%%%%%%%%%%%%%%%
+    % representation of E
+    %%%%%%%%%%%%%%%%%%%%%
+    \foreach \t in {10,20,...,360}% generatrices 1
+      \draw[dashed] ({\offb*cos(\t)},{\offc*sin(\t)},0)--({\offb*cos(\t)},{\offc*sin(\t)},{2.0*\h});
+    \draw[very thick] (\offb*1,\offc*0,0) % lower circle
+	\foreach \t in {5,10,...,360}{--({\offb*cos(\t)},{\offc*sin(\t)},0)}--cycle;
+    \draw[very thick] (\offb*1,\offc*0,{2*\h}) % upper circle
+	\foreach \t in {5,10,...,360}{--({\offb*cos(\t)},{\offc*sin(\t)},{2*\h})}--cycle;
+	
+    \fill[] (-1.5,0,2*\h) circle (0pt) node[left]{$E$}; 
+	
+    %%%%%%%%%%%%%%%%%%%%%
+    % representation of B, U and x
+    %%%%%%%%%%%%%%%%%%%%%
+    \draw[very thick] (\offb*1,\offc*0,{3*\h}) % B
+	\foreach \t in {5,10,...,360}{--({\offb*cos(\t)},{\offc*sin(\t)},{3*\h})}--cycle;
+    \draw[magenta, very thick] ({1+\offa},{0},{3*\h}) % U
+	\foreach \t in {5,10,...,360}{--({cos(\t)+\offa},{sin(\t)},{3*\h})}--cycle;
+    
+    \fill[]     (-1.5,0,3*\h) circle (0pt) node[left]{$B$}; 
+    \fill[magenta] (1,0,3*\h) circle (0pt)node[right]{$U$};
+    \fill[blue]	 (0,0,3*\h) circle (1pt)node[left]{$x$};
+    
+  %   \draw[<-,thick] (-1.5,0,3*\h)--(-1.5,0,2*\h) node[above right]{$\pi$};
+    \draw[<-,thick] (-1.5,0,3*\h)--(-1.5,0,2*\h);
+    \fill[] (-1.5,0,2.5*\h) circle (0pt)node[right]{$\pi$};
+    
+    %%%%%%%%%%%%%%%%%%%%%
+    % representation of pi^-1(U)
+    %%%%%%%%%%%%%%%%%%%%%
+    \foreach \t in {20,40,...,360}% generatrices
+      \draw[magenta, dashed] ({cos(\t)+\offa},{sin(\t)},0)--({cos(\t)+\offa},{sin(\t)},{2.0*\h});
+    \draw[magenta, very thick] ({1+\offa},{0},0) % lower circle
+	\foreach \t in {5,10,...,360}{--({cos(\t)+\offa},{sin(\t)},0)}--cycle;
+    \draw[magenta, very thick] ({1+\offa},{0},{2*\h}) % upper circle
+	\foreach \t in {5,10,...,360}{--({cos(\t)+\offa},{sin(\t)},{2*\h})}--cycle;
+	
+    \draw[blue, very thick] (0,0,0) -- (0,0,2*\h) node[left]{$E_x$};
+  %   \fill[blue] (0,0,\h) circle (0pt) node[left]{$\pi^{-1}(x)$};
+    
+    %%%%%%%%%%%%%%%%%%%%%
+    % representation of UxF
+    %%%%%%%%%%%%%%%%%%%%%
+    \foreach \t in {20,40,...,360}% generatrices
+      \draw[orange, dashed] ({cos(\t)-\offd},{sin(\t)+\offd},0)--({cos(\t)-\offd},{sin(\t)+\offd},{2.0*\h});
+    \draw[orange, very thick] ({1-\offd},{0+\offd},0) % lower circle
+	\foreach \t in {5,10,...,360}{--({cos(\t)-\offd},{sin(\t)+\offd},0)}--cycle;
+    \draw[orange, very thick] ({1-\offd},{0+\offd},{2*\h}) % upper circle
+	\foreach \t in {5,10,...,360}{--({cos(\t)-\offd},{sin(\t)+\offd},{2*\h})}--cycle;
+	
+    \draw[red, very thick] (0-\offd,0+\offd,0) -- (0-\offd,0+\offd,2*\h);
+    \fill[red]    (0-\offd,0+\offd,\h) circle (0pt) node[right]{$F$};
+    \fill[orange] (0-\offd,0+\offd,2*\h) circle (0pt) node[left]{$U \times F$}; 
+    
+    %%%%%%%%%%%%%%%%%%%%%
+    % representation of Phi_U
+    %%%%%%%%%%%%%%%%%%%%%
+    \draw[->,thick] (-0.5,0.5,\h) -- (-2.2,2.2,\h) node[above left]{$\Phi_U$};
+
+  \end{tikzpicture}
+  \caption{Skizze eines Faserbündels.}
+  \label{fig:faserbundel}
+\end{figure}
+
+Diese Definition ist in \autoref{fig:faserbundel} veranschaulicht. Neben der Beziehung zwischen dem Totalraum $E$ und dem Basisraum $B$, sind in blau ein Punkt $x \in B$ und sein Urbild $E_x$
+bezüglich $\pi$ sowie in magenta die Umgebung $U$ um $x$ und deren Urbild unter $\pi$ dargestellt. Zudem sind die typische Faser $F$ in rot und der Diffeomorphismus $\Phi_U$ sowie dessen Bild 
+$U \times F$ in orange abgebildet.
+
+\thmbox{defbem}{}{Für alle $x \in B$ sei folgende Abbildung definiert: \[\Phi_{U,x} \colon E_x \to F , \ \Phi_{U,x} := \pi_F \circ \Phi_U.\] 
+Dann ist für jede Faser $E_x$ durch $\Phi_{U,x}$ ein Isomorphismus auf die typische Faser $F$ gegeben, was der Grund für deren Benennung ist.}
+
+% \thmbox{defbem}{Übergangsfunktionen und Cozykelbedingung}{Seien $U_i, U_k \subset B$ offene Umgebungen mit Bündelkarten $\Phi_{U_i}$ und $\Phi_{U_k}$. 
+% }
+
