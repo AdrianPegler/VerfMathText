@@ -1,4 +1,31 @@
-\section{Vektorbündel}
+\section{Hauptfaser- und Rahmenbündel}
 \label{sec:vektorbundel}
 
-\thmbox{defn}{Hauptfaserbündel}{Hier folgt die Definition}
+\thmbox{defn}{Hauptfaserbündel}{Sei $(P, \pi, B)$ ein Faserbündel und $G$ eine Lie-Gruppe. $(P, \pi, B) = (P, \pi, B ; G)$ heißt \textbf{$G$-Hauptfaserbündel}, falls gilt:
+\begin{enumerate}
+ \item $G$ wirkt von rechts als Liesche Transformationsgruppe auf $P$. Die Wirkung ist frei, fasertreu und faserweise transitiv.
+ \item Es gibt einen Bündelatlas $\{ \Phi_U \}$ aus G-äquivarianten (lokalen) Trivialisierungen. Das heißt:
+      \begin{enumerate}
+       \item $\Phi_U \colon \pi^{-1}(U) \to U \times G$ ist ein Diffeomorphismus.
+       \item $\pi_U \after \Phi_U = \pi$.\footnotemark
+       \item $\Phi_U (p \cdot g) = \Phi_U(p) \cdot g$ für alle $p \in \pi^{-1}$, $g \in G$.
+      \end{enumerate}\footnotetext{$\pi_u$ ist die Projektion $U \times G \to U$.}
+\end{enumerate}
+Es gilt also folgendes Schema:
+\begin{center}
+  \begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2.8cm, semithick]
+    \tikzstyle{every state}=[draw=none]
+
+    \node[state] (A)			{$\pi^{-1}(U) \times G$};
+    \node[state] (B) [below right of=A]	{$U \times G \times G$};
+    \node[state] (C) [above right of=B] {$\pi^{-1}(U)$};
+    \node[state] (D) [below right of=C] {$U \times G$};
+
+    \path (A) edge      node {$\cdot_G$} 		(C)
+	  (C) edge      node {$\pi_U$} 			(D)
+	  (A) edge      node {$\Phi_U \times id_G$} 	(B)
+	  (B) edge	node {$id_U \times \cdot_G$}	(D);
+  \end{tikzpicture}
+\end{center}%\\
+Die Lie-Gruppe $G$ heißt auch \textbf{Strukturgruppe} des Haputfaserbündels.
+}

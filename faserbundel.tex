@@ -14,7 +14,7 @@ gilt, nennen wir $\left( E, \pi, B \right)$ \textbf{Faserbündel} mit \textbf{ty
 
     \node[state] (A)			{$\pi^{-1}(U) \subset E$};
     \node[state] (B) [below right of=A]	{$U \subset B$};
-    \node[state] (C) [above right of=B] 	{$U \times F$};
+    \node[state] (C) [above right of=B] {$U \times F$};
 
     \path (A) edge              node {$\Phi_U$} (C)
 	      edge              node {$\pi$} (B)
@@ -96,4 +96,16 @@ wir die Menge aller Schnitte in $E$.}
 \thmbox{bem}{}{Für ein triviales Faserbündel $(M \times F, \pi_M, M)$ gilt offensichtlich:
 \[\Gamma(M \times F) = \mathcal{C}^\infty(M,F)\]
 Weitere bekannte Objekte aus der Geometrie, die als Schnitte von Faserbündeln aufgefasst werden können sind:
+\TODO{ausarbeiten}
+\begin{labeling}{\hspace*{35mm}$\Gamma(\Omega^k T^*M)$}
+ \item[\hspace*{35mm}$\Gamma(TB)$]		Vektorfelder über $B$,
+ \item[\hspace*{35mm}$\Gamma(T^*B)$]		1-Formen über $B$,
+ \item[\hspace*{35mm}$\Gamma(\Omega^k T^*M)$]	k-Formen über $B$.
+\end{labeling}
 }
+
+\thmbox{defbem}{Vektorbündel}{Für ein beliebiges Faserbündel $(E, \pi, B)$ mit typischer Faser $F$, kann die Menge der Schnitte $\Gamma(E) = \emptyset$ sein.
+
+Existiert jedoch ein Isomorphismus $F \to \mathbb{K}^n$, so gibt es immer Schnitte. \todo{Nullschnitt?} Ein solches Faserbündel nennen wir auf $\mathbb{K}$-Vektorbündel.}
+
+\clearpage
