@@ -30,6 +30,8 @@
 		}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
 
 \let\proof\relax
 \let\endproof\relax
@@ -40,7 +42,7 @@
 
 \theoremstyle{definition}
 \spnewtheorem{defn}[thm]{Definition}{\bfseries}{\itshape} % definition numbers are dependent on theorem numbers
-\spnewtheorem{exmp}[thm]{Beispiel}{\bfseries}{\itshape} % same for example numbers
+\spnewtheorem{bsp}[thm]{Beispiel}{\bfseries}{\itshape} % same for example numbers
 \spnewtheorem{bem}[thm]{Bemerkung}{\bfseries}{\itshape}
 \spnewtheorem{lemdef}[thm]{Lemma und Definition}{\bfseries}{\itshape}
 \spnewtheorem{defbem}[thm]{Definition und Bemerkung}{\bfseries}{\itshape}
@@ -55,6 +57,15 @@
 }
 
 \newcommand{\difman}{Differenzierbare Mannigfaltigkeiten}
+
+\newcommand{\TODO}[1]{\todo[inline]{#1}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ttit}[1]{\text{\textit{#1}}}
+\newcommand{\pot}[1]{\mathcal{P}(#1)}
+\newcommand{\after}{\circ}
 
 %\usepackage{nameref}
 %\usepackage{varioref}
