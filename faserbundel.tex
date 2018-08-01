@@ -1,7 +1,7 @@
 \section{Faserbündel}
 \label{sec:faserbundel}
 
-\thmbox{defn}{Faserbündel}{Seien $E$, $B$, $F$ \difman, $\pi \colon E \to B$ eine glatte surjektive Funktion.\\
+\thmbox{defn}{Faserbündel}{Seien $E$, $B$, $F$ \difmans, $\pi \colon E \to B$ eine glatte surjektive Funktion.\\
 Falls es um jeden Punkt $x \in B$ eine Umgebung $U$ sowie einen Diffeomorphismus $\Phi_U \colon \pi^{-1}(U) \to U \times F$ gibt, sodass 
 \begin{equation}
 \pi_U \after \Phi_U = \pi
@@ -24,79 +24,7 @@ gilt, nennen wir $\left( E, \pi, B \right)$ \textbf{Faserbündel} mit \textbf{ty
 $B$ heißt \textbf{Basisraum} und $E$ \textbf{Totalraum} des Faserbündels. Die Abbildung $\Phi_U$ wird auch \textbf{lokale Trivialisierung} oder \textbf{Bündelkarte} genannt.
 Mit $E_x := \pi^{-1}(x)$  bezeichnen wir für alle $x \in B$ die \textbf{Faser} über $x$. }
 
-\begin{figure}[t]
-  \begin{tikzpicture}[MyPersp]%,font=\large]
-    % the base circle is the unit circle in plane Oxy
-    \def\h{1.5}% Heigth of the ellipse center (on the axis of the cylinder)
-    \def\offa{0.5}% 
-    \def\offb{2.6}%
-    \def\offc{1.4}%
-    \def\offd{3}%
-
-    %%%%%%%%%%%%%%%%%%%%%
-    % representation of E
-    %%%%%%%%%%%%%%%%%%%%%
-    \foreach \t in {10,20,...,360}% generatrices 1
-      \draw[dashed] ({\offb*cos(\t)},{\offc*sin(\t)},0)--({\offb*cos(\t)},{\offc*sin(\t)},{2.0*\h});
-    \draw[very thick] (\offb*1,\offc*0,0) % lower circle
-	\foreach \t in {5,10,...,360}{--({\offb*cos(\t)},{\offc*sin(\t)},0)}--cycle;
-    \draw[very thick] (\offb*1,\offc*0,{2*\h}) % upper circle
-	\foreach \t in {5,10,...,360}{--({\offb*cos(\t)},{\offc*sin(\t)},{2*\h})}--cycle;
-	
-    \fill[] (-1.5,0,2*\h) circle (0pt) node[left]{$E$}; 
-	
-    %%%%%%%%%%%%%%%%%%%%%
-    % representation of B, U and x
-    %%%%%%%%%%%%%%%%%%%%%
-    \draw[very thick] (\offb*1,\offc*0,{3*\h}) % B
-	\foreach \t in {5,10,...,360}{--({\offb*cos(\t)},{\offc*sin(\t)},{3*\h})}--cycle;
-    \draw[magenta, very thick] ({1+\offa},{0},{3*\h}) % U
-	\foreach \t in {5,10,...,360}{--({cos(\t)+\offa},{sin(\t)},{3*\h})}--cycle;
-    
-    \fill[]     (-1.5,0,3*\h) circle (0pt) node[left]{$B$}; 
-    \fill[magenta] (1,0,3*\h) circle (0pt)node[right]{$U$};
-    \fill[blue]	 (0,0,3*\h) circle (1pt)node[left]{$x$};
-    
-  %   \draw[<-,thick] (-1.5,0,3*\h)--(-1.5,0,2*\h) node[above right]{$\pi$};
-    \draw[<-,thick] (-1.5,0,3*\h)--(-1.5,0,2*\h);
-    \fill[] (-1.5,0,2.5*\h) circle (0pt)node[right]{$\pi$};
-    
-    %%%%%%%%%%%%%%%%%%%%%
-    % representation of pi^-1(U)
-    %%%%%%%%%%%%%%%%%%%%%
-    \foreach \t in {20,40,...,360}% generatrices
-      \draw[magenta, dashed] ({cos(\t)+\offa},{sin(\t)},0)--({cos(\t)+\offa},{sin(\t)},{2.0*\h});
-    \draw[magenta, very thick] ({1+\offa},{0},0) % lower circle
-	\foreach \t in {5,10,...,360}{--({cos(\t)+\offa},{sin(\t)},0)}--cycle;
-    \draw[magenta, very thick] ({1+\offa},{0},{2*\h}) % upper circle
-	\foreach \t in {5,10,...,360}{--({cos(\t)+\offa},{sin(\t)},{2*\h})}--cycle;
-	
-    \draw[blue, very thick] (0,0,0) -- (0,0,2*\h) node[left]{$E_x$};
-  %   \fill[blue] (0,0,\h) circle (0pt) node[left]{$\pi^{-1}(x)$};
-    
-    %%%%%%%%%%%%%%%%%%%%%
-    % representation of UxF
-    %%%%%%%%%%%%%%%%%%%%%
-    \foreach \t in {20,40,...,360}% generatrices
-      \draw[orange, dashed] ({cos(\t)-\offd},{sin(\t)+\offd},0)--({cos(\t)-\offd},{sin(\t)+\offd},{2.0*\h});
-    \draw[orange, very thick] ({1-\offd},{0+\offd},0) % lower circle
-	\foreach \t in {5,10,...,360}{--({cos(\t)-\offd},{sin(\t)+\offd},0)}--cycle;
-    \draw[orange, very thick] ({1-\offd},{0+\offd},{2*\h}) % upper circle
-	\foreach \t in {5,10,...,360}{--({cos(\t)-\offd},{sin(\t)+\offd},{2*\h})}--cycle;
-	
-    \draw[red, very thick] (0-\offd,0+\offd,0) -- (0-\offd,0+\offd,2*\h);
-    \fill[red]    (0-\offd,0+\offd,\h) circle (0pt) node[right]{$F$};
-    \fill[orange] (0-\offd,0+\offd,2*\h) circle (0pt) node[left]{$U \times F$}; 
-    
-    %%%%%%%%%%%%%%%%%%%%%
-    % representation of Phi_U
-    %%%%%%%%%%%%%%%%%%%%%
-    \draw[->,thick] (-0.5,0.5,\h) -- (-2.2,2.2,\h) node[above left]{$\Phi_U$};
-
-  \end{tikzpicture}
-  \caption{Skizze eines Faserbündels.}
-  \label{fig:faserbundel}
-\end{figure}
+\input{fig_faserbundel}
 
 Diese Definition ist in \autoref{fig:faserbundel} veranschaulicht. Neben der Beziehung zwischen dem Totalraum $E$ und dem Basisraum $B$, sind in blau ein Punkt $x \in B$ und sein Urbild $E_x$
 bezüglich $\pi$ sowie in magenta die Umgebung $U$ um $x$ und deren Urbild unter $\pi$ dargestellt. Zudem sind die typische Faser $F$ in rot und der Diffeomorphismus $\Phi_U$ sowie dessen Bild 
@@ -124,7 +52,7 @@ es einen Diffeomorphismus $\Psi \colon E \to \tilde E$ gibt, sodass $\tilde \pi 
   \end{tikzpicture}
 \end{center}}%
 
-\thmbox{bsp}{}{Seien $M$ und $F$ \difman, $\pi \colon M \times F \to M$ die Projektion auf die erste Komponente. Dann ist $(M \times F, \pi, M)$ ein Faserbündel.
+\thmbox{bsp}{}{Seien $M$ und $F$ \difmans, $\pi \colon M \times F \to M$ die Projektion auf die erste Komponente. Dann ist $(M \times F, \pi, M)$ ein Faserbündel.
 Jedes zu diesem Faserbündel isomorphe Faserbündel nennen wir \textbf{trivial}.}
 
 \thmbox{bsp}{}{Sei $M$ eine n-dimensionale \difman. Die Folgenden Bündel sind Faserbündel mit Basisraum $M$:
@@ -133,4 +61,39 @@ Jedes zu diesem Faserbündel isomorphe Faserbündel nennen wir \textbf{trivial}.
  \item das Cotangentialbündel: $(T^* M, \pi, M); \R^n$,
  \item das k-Formenbündel: $(\Omega^k M, \pi, M); \R^{\binom{n}{k}}$.
 \end{enumerate}
+}
+
+\thmbox{bsp}{}{Sei $(B,g)$ eine n-dimensionale Riemansche Mannigfaltigkeit. Setze: 
+\begin{align*}
+  E   &:= \{ x \in TB \ | \ \norm{x}_g = 1 \},\\
+  \pi &:= {\pi_{_{TB}}\big|}_E.
+\end{align*}
+Das Faserbündel $(E,\pi,B)$ heißt \textbf{Einheits-Sphären-Bündel}.
+
+Dieser Name leitet sich von der typischen Faser $F = S^{n-1}$ her. Dies folgt, da mit den Definitionen von $E$ und $\pi$ für alle $p \in B$ gilt: 
+\[ \pi^{-1}(p) = \{ x \in T_pB \ | \ \norm{x}_g = 1 \}.\]
+Die lokalen Trivialisierungen erhält man aus denen des Tangentialbündels. 
+}
+
+\thmbox{lemdef}{Rückzug}{ Seien $M, N$ \difmans, und $f \colon M \to N$ eine glatte Abbildung. Für ein Faserbündel $(E, \pi, M)$ definieren wir $f^*(E, \pi, M) := (f^*E, \tilde \pi, N)$ durch:
+\begin{align*}
+  f^*E &:= \{ (y,e) \in N \times E \ | \ f(y) = \pi(e) \}\\
+  \tilde \pi(y,e) &:= y
+\end{align*}
+Damit ist $(f^*E, \tilde \pi, N)$ ein Faserbündel über $N$ und heißt der \textbf{Rückzug} (engl.: pull back) von $(E, \pi, M)$ entlang $f$. Dabei bleibt die typische Faser erhalten.}
+
+\thmbox{bem}{}{Sei $F$ eine glatte Mannigfaltigkeit und $\varphi \colon F \to F$ ein Diffeomorphismus. Dann wirkt $\Z$ durch $(k, (t,f)) \mapsto (t+k, \varphi^k(f))$ eigentlich diskontinuierlich auf 
+$\R \times F$.
+
+Mit $E := \fak{\R \times F}{\Z}$ und $\pi \colon E \to \fak{\R}{\Z} \cong S^1 =: B$ ist $(E, \pi, B)$ ein Faserbündel mit typischer Faser $F$.}
+
+Geometrisch wird der Totalraum $E$ also aus den trivialen Bündeln $[0,1] \times F \to [0,1]$ durch ``zusammenkleben'' der Fasern durch den Diffeomorphismus $\varphi$ konstruiert.
+Um lokale Trivialisierungen zu konstruieren, nutzt man die (globale) Trivialität der Projektion $\pi_\R \colon \R \times F \to \R$ sowie die eigentliche Diskontinuität der Wirkung.
+
+\thmbox{defn}{Schnitt}{Unter einem glatten Schnitt eines Faserbündels $(E, \pi, B)$ versteht man eine glatte Abbildung $s \colon B \to E$, sodass $\pi \after s = id_B$. Mit $\Gamma(E)$ bezeichnen
+wir die Menge aller Schnitte in $E$.}
+
+\thmbox{bem}{}{Für ein triviales Faserbündel $(M \times F, \pi_M, M)$ gilt offensichtlich:
+\[\Gamma(M \times F) = \mathcal{C}^\infty(M,F)\]
+Weitere bekannte Objekte aus der Geometrie, die als Schnitte von Faserbündeln aufgefasst werden können sind:
 }
