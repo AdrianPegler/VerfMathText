@@ -1,4 +1,5 @@
-\begin{figure}[t]
+\begin{figure}[!b]
+\centering
   \begin{tikzpicture}[MyPersp]%,font=\large]
     % the base circle is the unit circle in plane Oxy
     \def\h{1.5}% Heigth of the ellipse center (on the axis of the cylinder)
@@ -17,23 +18,23 @@
     \draw[very thick] (\offb*1,\offc*0,{2*\h}) % upper circle
 	\foreach \t in {5,10,...,360}{--({\offb*cos(\t)},{\offc*sin(\t)},{2*\h})}--cycle;
 	
-    \fill[] (-1.5,0,2*\h) circle (0pt) node[left]{$E$}; 
+    \fill[] (-1.7,0.25,0) circle (0pt) node[left]{$E$}; 
 	
     %%%%%%%%%%%%%%%%%%%%%
     % representation of B, U and x
     %%%%%%%%%%%%%%%%%%%%%
-    \draw[very thick] (\offb*1,\offc*0,{3*\h}) % B
-	\foreach \t in {5,10,...,360}{--({\offb*cos(\t)},{\offc*sin(\t)},{3*\h})}--cycle;
-    \draw[magenta, very thick] ({1+\offa},{0},{3*\h}) % U
-	\foreach \t in {5,10,...,360}{--({cos(\t)+\offa},{sin(\t)},{3*\h})}--cycle;
+    \draw[very thick] (\offb*1,\offc*0,{-\h}) % B
+	\foreach \t in {5,10,...,360}{--({\offb*cos(\t)},{\offc*sin(\t)},{-\h})}--cycle;
+    \draw[magenta, very thick] ({1+\offa},{0},{-\h}) % U
+	\foreach \t in {5,10,...,360}{--({cos(\t)+\offa},{sin(\t)},{-\h})}--cycle;
     
-    \fill[]     (-1.5,0,3*\h) circle (0pt) node[left]{$B$}; 
-    \fill[magenta] (1,0,3*\h) circle (0pt)node[right]{$U$};
-    \fill[blue]	 (0,0,3*\h) circle (1pt)node[left]{$x$};
+    \fill[]     (-1.7,0.25,-\h) circle (0pt) node[left]{$B$}; 
+    \fill[magenta] (1,0,-\h) circle (0pt)node[right]{$U$};
+    \fill[blue]	 (0,0,-\h) circle (1pt)node[left]{$x$};
     
-  %   \draw[<-,thick] (-1.5,0,3*\h)--(-1.5,0,2*\h) node[above right]{$\pi$};
-    \draw[<-,thick] (-1.5,0,3*\h)--(-1.5,0,2*\h);
-    \fill[] (-1.5,0,2.5*\h) circle (0pt)node[right]{$\pi$};
+  %   \draw[<-,thick] (-1.7,0.25,-\h)--(-1.7,0.25,2*\h) node[above right]{$\pi$};
+    \draw[<-,thick] (-1.7,0.25,-\h)--(-1.7,0.25,0);
+    \fill[] (-1.7,0.25,-0.5*\h) circle (0pt)node[right]{$\pi$};
     
     %%%%%%%%%%%%%%%%%%%%%
     % representation of pi^-1(U)

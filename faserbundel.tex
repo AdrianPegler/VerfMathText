@@ -7,7 +7,7 @@ Falls es um jeden Punkt $x \in B$ eine Umgebung $U$ sowie einen Diffeomorphismus
 \pi_U \after \Phi_U = \pi
 \label{eq:kommut}
 \end{equation}
-gilt, nennen wir $\left( E, \pi, B \right)$ \textbf{Faserbündel} mit \textbf{typischer Faser} $F$. Nach \autoref{eq:kommut} kommutiert also folgendes Schema:
+gilt, nennen wir $\left( E, \pi, B ; F\right)$ \textbf{Faserbündel} mit \textbf{typischer Faser} $F$. Nach \autoref{eq:kommut} kommutiert also folgendes Schema:
 \begin{center}
   \begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2.8cm, semithick]
     \tikzstyle{every state}=[draw=none]
@@ -75,7 +75,9 @@ Dieser Name leitet sich von der typischen Faser $F = S^{n-1}$ her. Dies folgt, d
 Die lokalen Trivialisierungen erhält man aus denen des Tangentialbündels. 
 }
 
-\thmbox{lemdef}{Rückzug}{ Seien $M, N$ \difmans, und $f \colon M \to N$ eine glatte Abbildung. Für ein Faserbündel $(E, \pi, M)$ definieren wir $f^*(E, \pi, M) := (f^*E, \tilde \pi, N)$ durch:
+\subsection{Konstruktionen}
+
+\thmbox{lemdef}{Rückzug}{\label{def:ruck} Seien $M, N$ \difmans, und $f \colon M \to N$ eine glatte Abbildung. Für ein Faserbündel $(E, \pi, M)$ definieren wir $f^*(E, \pi, M) := (f^*E, \tilde \pi, N)$ durch:
 \begin{align*}
   f^*E &:= \{ (y,e) \in N \times E \ | \ f(y) = \pi(e) \}\\
   \tilde \pi(y,e) &:= y
@@ -89,6 +91,8 @@ Mit $E := \fak{\R \times F}{\Z}$ und $\pi \colon E \to \fak{\R}{\Z} \cong S^1 =:
 
 Geometrisch wird der Totalraum $E$ also aus den trivialen Bündeln $[0,1] \times F \to [0,1]$ durch ``zusammenkleben'' der Fasern durch den Diffeomorphismus $\varphi$ konstruiert.
 Um lokale Trivialisierungen zu konstruieren, nutzt man die (globale) Trivialität der Projektion $\pi_\R \colon \R \times F \to \R$ sowie die eigentliche Diskontinuität der Wirkung.
+
+\subsection{Schnitte}
 
 \thmbox{defn}{Schnitt}{Unter einem glatten Schnitt eines Faserbündels $(E, \pi, B)$ versteht man eine glatte Abbildung $s \colon B \to E$, sodass $\pi \after s = id_B$. Mit $\Gamma(E)$ bezeichnen
 wir die Menge aller Schnitte in $E$.}
@@ -106,6 +110,6 @@ Weitere bekannte Objekte aus der Geometrie, die als Schnitte von Faserbündeln a
 
 \thmbox{defbem}{Vektorbündel}{Für ein beliebiges Faserbündel $(E, \pi, B)$ mit typischer Faser $F$, kann die Menge der Schnitte $\Gamma(E) = \emptyset$ sein.
 
-Existiert jedoch ein Isomorphismus $F \to \mathbb{K}^n$, so gibt es immer Schnitte. \todo{Nullschnitt?} Ein solches Faserbündel nennen wir auf $\mathbb{K}$-Vektorbündel.}
+Existiert jedoch ein Isomorphismus $F \to \K^n$, so gibt es immer Schnitte. \todo{Nullschnitt?} Ein solches Faserbündel nennen wir auf $\K$-Vektorbündel.}
 
 \clearpage

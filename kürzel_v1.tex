@@ -10,11 +10,11 @@
 % references
 \usepackage[backend=biber,isbn=false,doi=false]{biblatex}
 \addbibresource{template.bib}
-	%\usepackage[numbers]{natbib}
-	%\bibliographystyle{abbrvnat}
-	%\makeatletter
-	%	\renewcommand\bibsection{\section*{\refname\@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}}
-	%\makeatother
+% 	\usepackage[numbers]{natbib}
+% 	\bibliographystyle{abbrvnat}
+% 	\makeatletter
+% 		\renewcommand\bibsection{\section*{\refname\@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}}
+% 	\makeatother
 
 \usepackage{xcolor}
 \usepackage{todonotes}
@@ -24,7 +24,7 @@
 \usetikzlibrary{arrows,automata}
 \usepackage{verbatim}
 \tikzset{
-	MyPersp/.style={scale=1.3,x={(-0.8cm,-0.2cm)},y={(0.8cm,-0.2cm)},z={(0cm,1cm)}},
+	MyPersp/.style={scale=1.1,x={(-0.8cm,-0.2cm)},y={(0.8cm,-0.2cm)},z={(0cm,1cm)}},
 % 	MyPersp/.style={scale=1.5,x={(-0.8cm,-0.4cm)},y={(1cm,0cm)},     z={(0cm,1cm)}}, % uncomment the two lines to get a lateral view
 	MyPoints/.style={fill=white,draw=black,thick}
 		}
@@ -49,6 +49,7 @@
 \spnewtheorem{defbem}[thm]{Definition und Bemerkung}{\bfseries}{\itshape}
 \spnewtheorem{lem}[thm]{Lemma}{\bfseries}{\itshape}
 \spnewtheorem{ann}{Annahme}{\bfseries}{\itshape}
+\spnewtheorem{flg}[thm]{Folgerung}{\bfseries}{\itshape}
 
 \newcommand{\thmbox}[3]{
   \begin{#1}
@@ -68,9 +69,14 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+% \newcommand{\H}{\mathbb{H}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\ttit}[1]{\text{\textit{#1}}}
 \newcommand{\pot}[1]{\mathcal{P}(#1)}
 \newcommand{\after}{\circ}
+
+\renewcommand*{\thefootnote}{(\alph{footnote})}
 
 %\usepackage{nameref}
 %\usepackage{varioref}
@@ -118,10 +124,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% BEGIN DOCUMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Hauptfaserbündel und Vektorbündel}
+\title{Bündeltheorie}
 %\subtitle{My (optional) Subtitle}
 \author{Adrian Pegler}
-\institute{Christian-Albrechts-Universität zu Kiel\\Arbeitsgruppe Geometrie\\24098 Kiel}
+\institute{Christian-Albrechts-Universität zu Kiel\\Arbeitsgruppe Geometrie\\Prof. Dr. Hartmut Weiß\\24098 Kiel}
 
 \begin{document}
 
@@ -130,11 +136,32 @@
 	\today
 \end{center}
 
-\begin{abstract}
-  This is my abstract.
-\end{abstract}
+% \begin{abstract}
+%   This is my abstract.
+% \end{abstract}
 
 %\section{Introduction}
+%\chapter{Bündeltheorie}
+
+\section*{Einleitung}
+Dieses Dokument stellt eine Verschriftlichung meines Seminarvortrages in \textit{Differenzierbare Mannigfaltigkeiten} dar. Der Vortrag und dieses Dokument folgen weiterstgehend dem Aufbau des 
+Vorlesungsskriptes \textit{Gauge Theory} von \textcite{baer}. 
+Nachdem der vorangegangene Vortrag Lie-Gruppen und -Algebren sowie Vektorfelder und adjungierte Darstellungen zum Thema hatte sollen hier unterschiedliche Bündel eingeführt werden. 
+Beginnend mit Faserbündeln werden nacheinander Vektorbündel, Hauptfaserbündel, assoziierte Bündel sowie Rahmenbündel eingeführt und einige Eigenschaften festgehalten und Beispiele vorgestellt.
+Auf Grund des geforderten Umfanges werde ich auf eigene Beweisführungen verzichten und verweise auf Quellen in denen die entsprechenden Beweise geführt wurden.
+
+\section*{Wiederholung}
+
+\thmbox{defn}{Lie-Gruppe}{Eine \difman \ $G$, die gleichzeitig eine Gruppenstruktur aufweist wird \textbf{Lie-Gruppe} gennant, falls die Abbildung
+\begin{align*}
+  G \times G \to G, &(g_1,g_2) \mapsto g_1 \cdot g_2 \text{ und}\\
+  G \to G,          & g \mapsto g^{-1}
+\end{align*}
+glatt sind.}
+
+\thmbox{defn}{Darstellung}{Seien $V$ ein endlich-dimensionaler $\K$-Vektorraum und $G$ eine Lie-Gruppe. Ein Lie-Gruppen-Homomorphismus $\rho \colon G \to Aut(V)$ heißt \textbf{Darstellung} von G.}
+
+\clearpage
 
 \input{faserbundel}
 
