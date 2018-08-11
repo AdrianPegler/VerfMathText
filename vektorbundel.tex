@@ -8,10 +8,10 @@
       \begin{enumerate}
        \item $\Phi_U \colon \pi^{-1}(U) \to U \times G$ ist ein Diffeomorphismus.
        \item $\pi_U \after \Phi_U = \pi$ \footnotemark.
-       \item $\Phi_U (p \cdot g) = \Phi_U(p) \cdot g$ für alle $p \in \pi^{-1}$, $g \in G$.
+       \item $\Phi_U (p \cdot g) = \Phi_U(p) \cdot g$ für alle $p \in \pi^{-1}(U)  $, $g \in G$.
       \end{enumerate}\footnotetext{$\pi_U$ ist die Projektion $U \times G \to U$.}
 \end{enumerate}
-Es gilt also folgendes Schema:
+Es gilt also folgendes Diagramm:
 \begin{center}
   \begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2.8cm, semithick]
     \tikzstyle{every state}=[draw=none]
@@ -22,7 +22,7 @@ Es gilt also folgendes Schema:
     \node[state] (D) [below right of=C] {$U \times G$};
 
     \path (A) edge      node {$\cdot_G$} 		(C)
-	  (C) edge      node {$\pi_U$} 			(D)
+	  (C) edge      node {$\Phi_U$} 		(D)
 	  (A) edge      node {$\Phi_U \times id_G$} 	(B)
 	  (B) edge	node {$id_U \times \cdot_G$}	(D);
   \end{tikzpicture}
@@ -32,11 +32,14 @@ Die Lie-Gruppe $G$ heißt auch \textbf{Strukturgruppe} des Hauptfaserbündels.
 
 \thmbox{bem}{}{Für alle $p \in P$ ist $L_p \colon G \to P_{\pi(p)}, g \mapsto p \cdot g$ ein Diffeomorphismus. Daher ist die Lie-Gruppe $G$ die typische Faser von $(P, \pi, B)$.
 
-Trotz dieser natürlichen Diffeomorphie existiert im Allgemeinen keine Gruppenstruktur auf den Fasern von $P$.}
+Trotz dieser natürlichen Diffeomorphie existiert im Allgemeinen keine Gruppenstruktur auf den Fasern von $P$. \cite{baer}}
 
-\subsection{Schnitte}
+%\subsection{Schnitte}
 
-Sei $(P, \pi, B)$ ein Hauptfaserbündel. Sei $U \subset B$ eine offene Umgebung und setze $P|_U := \pi^{-1}(U)$. Ferner sei eine lokale Trivialisierung \[\Phi_U \colon P|_U \to U \times G\] gegeben.
+Im Folgenden soll eine alternative Beschreibung für Hauptfaserbündel erläutert werden.
+
+Sei $(P, \pi, B ; G)$ ein $G$-Hauptfaserbündel. Sei $U \subset B$ eine offene Umgebung und setze $P|_U := \pi^{-1}(U)$. Ferner sei eine lokale Trivialisierung \[\Phi_U \colon P|_U \to U \times G\] 
+gegeben.
 Dann kann wie folgt ein glatter Schnitt $s \colon U \to P|_U$ definiert werden: \[s(x) := \Phi_U^{-1}(x,1_G).\]
 Für beliebiges $g \in G$ und $u \in U$ erhält man somit: \[\Phi_U^{-1}(u,g) = \Phi_U^{-1}(u,1_g \cdot g) = \Phi_U^{-1}(u,1_G) \cdot g = s(u) \cdot g\]
 
@@ -48,23 +51,38 @@ Durch die Zuweisung \[\Phi_U(p) := (\pi(p), g_p)\] erhält man so eine lokale Tr
 
 Hauptfaserbündel können lokal also auch durch ihre Schnitte beschrieben werden. Dies soll im Folgenden konkret festgehalten werden:
 
-\thmbox{lem}{}{\label{lem:altdef} Alternativ kann \autoref{it:bundelatlas} in \hyperref[def:hfb]{Definition }\ref{def:hfb} mit dem zuvor erläuterten auch folgendermaßen formuliert werden:
+\thmbox{lem}{}{\label{lem:altdef} Alternativ kann \autoref{it:bundelatlas} in \hyperref[def:hfb]{Definition }\ref{def:hfb} mit dem zuvor Erläuterten auch folgendermaßen formuliert werden:
 \begin{enumerate}
  \item[\ref*{it:bundelatlas}'.] Es existieren eine offene Überdeckung $\{ U_i \}_{i \in I}$ von $B$ und lokale Schnitte \linebreak $\{ s_i \colon U_i \to P \}_{i \in I}$, sodass
  \[\Psi_{s_i} \colon P_{U_i} \to G, p = s_i(\pi(p)) \cdot g_p \mapsto g_p\] glatt ist.
 \end{enumerate}}
 
-Nachdem wir nun eine alternative Charakterisierung für Hauptfaserbündel gefunden haben, muss noch definiert werden, wann Hauptfaserbündel isomorph sind. Anschließend wird erläutert, warum sich diese
+Eine weitere Charakterisierung der Hauptfaserbündel kann über die zuvor definierten Cozykel und die folgenden G-Cozykel erfolgen \cite{baum}.
+
+\thmbox{defn}{G-Cozykeln}{Seien $M$ eine Mannigfaltigkeit und $G$ eine Lie-Gruppe. Weiterhin sei $\mathfrak{U} = \{U_i\}_{i \in I}$ eine offene Überdeckung von $M$. Eine Familie 
+$\{ g_{ij} \}_{i,j \in I}$ glatter Funktionen $g_{ij} \colon U_i \cap U_j \to G$, die die Cozykelbedingung erfüllen, heißt \textbf{$G$-Cozykeln von $M$}.}
+
+\textcite{baum} beweist damit folgende Aussage:
+
+\thmbox{lem}{}{Seien $G$ eine Lie-Gruppe, $P$ und $B$ \difmans \ sowie $\pi \colon P \to B$ eine glatte Funktion. Das Tupel $(P, \pi, B; G)$ ist genau dann ein $G$-Haupt\-faser\-bündel, wenn
+\begin{enumerate}
+ \item es eine offene Überdeckung $\{U_i\}_{i \in I}$ sowie
+ \item zugehörige Trivialisierungen $\{ \Phi_{U_i} \}_{i \in I}$ und G-Cozykeln $\{ g_{ij} \}_{i,j \in I}$ gibt, 
+ \item sodass die Cozykeln $\Phi_{ij}$ von $P$ gerade durch die Linkstranslation mit $g_{ij}$ \[\Phi_{ij}(x) = L_{g_{ij}(x)} \]gegeben sind.
+\end{enumerate}
+}
+
+Nachdem wir nun alternative Charakterisierungen für Hauptfaserbündel gefunden haben, muss noch definiert werden, wann zwei Hauptfaserbündel isomorph sind. Anschließend wird erläutert, warum sich diese
 Definition von der Isomorphie von Faserbündeln unterscheidet.
 
-\thmbox{defn}{Isomorphie}{\label{def:iso}Zwei $G$-Hauptfaserbündel $(P, \pi, B)$ und $(\tilde P, \tilde \pi, B)$ über dem selben Basisraum $B$ heißen isomorph, falls es einen $G$-äquivarianten 
+\thmbox{defn}{Isomorphie}{\label{def:iso}Zwei $G$-Hauptfaserbündel $(P, \pi, B)$ und $(\tilde P, \tilde \pi, B)$ über demselben Basisraum $B$ heißen isomorph, falls es einen $G$-äquivarianten 
 Diffeomorphismus 
 $\Phi \colon P \to \tilde P$ gibt, für den $\tilde \pi \after \Phi = \pi$ gilt.}
 
-\thmbox{bem}{}{\label{bem:equi}Die $G$-Äquivarianz ist wesentlich! Es gibt $G$-Hauptfaserbündel, die als Faserbündel betrachtet, nicht jedoch als Hauptfaserbündel isomorph sind.
+\thmbox{bem}{}{\label{bem:equi}Die $G$-Äquivarianz ist wesentlich! Es gibt $G$-Hauptfaserbündel, die als Faser\-bündel betrachtet, nicht jedoch als Hauptfaserbündel isomorph sind.
 
-Ein Gegenbeispiel ist leicht konstruiert, indem man bei identischen Faserbündeln die Gruppenwirkungderart definiert, dass $\Phi$ nicht G-äquivarianten ist. Die Faserbündel bleiben identisch, also 
-insbesondere isomorph, als $G$-Hauptfaserbündel sind sie allerdings nicht isomorph.}
+Ein Gegenbeispiel ist leicht konstruiert, indem man bei identischen Faser\-bündeln die Gruppenwirkung derart definiert, dass $\Phi$ nicht G-äquivariant ist. Die Faserbündel bleiben identisch, also 
+insbesondere isomorph, als $G$-Haupt\-faser\-bündel sind sie allerdings nicht isomorph.}
 
 \hyperref[lem:altdef]{Lemma }\ref{lem:altdef} und \hyperref[def:iso]{Definition }\ref{def:iso}, insbesondere mit der vorigen \hyperref[bem:equi]{Bemerkung }\ref{bem:equi}, implizieren folgende 
 Äquivalenz:
@@ -73,21 +91,18 @@ insbesondere isomorph, als $G$-Hauptfaserbündel sind sie allerdings nicht isomo
 
 \subsection{Konstruktionen}
 
-\thmbox{lem}{Rückzug}{Sei $(P, \pi, B)$ ein $G$-Hauptfaserbündel und sei $F \colon B \to \tilde B$ eine glatte Abbildung. Das durch den Rückzug (vgl. \hyperref[def:ruck]{Definition }\ref{def:ruck})
-konstruierte Faserbündel $(f^* P, \tilde \pi, \tilde B)$ ist bereits ein $G$-Hauptfaserbündel.}
+\thmbox{lem}{Rückzug}{Sei $(P, \pi, B)$ ein $G$-Hauptfaserbündel und sei $f \colon \tilde B \to B$ eine glatte Abbildung. Das durch den Rückzug (vgl. \hyperref[def:ruck]{Definition }\ref{def:ruck})
+konstruierte Faserbündel $(f^* P, \tilde \pi, \tilde B)$ wird durch $f^*P := \{ (\tilde b,p) \in \tilde B \times P \ | \ f(\tilde b) = \pi(p) \}$ und die Rechtswirkung $(\tilde b, p) \cdot g := 
+(\tilde b, p \cdot g)$ ein $G$-Hauptfaserbündel. \cite{baer}}
 
-\TODO{Beweis}
-
-Im Folgenden soll eine Möglichkeit aufgezeigt werden, die typische Faser und damit die Lie-Gruppe eines Hauptfaserbündels zu ``ersetzen''. Sei dazu ein $G$-Hauptfaserbündel $(P, \pi, B)$ sowie
+Im Folgenden soll eine Möglichkeit aufgezeigt werden, die typische Faser und damit die Lie-Gruppe eines Hauptfaserbündels zu ``ersetzen''. Sei dazu ein $G$-Hauptfaserbündel $(P, \pi, B; G)$ sowie
 eine Mannigfaltigkeit $F$ und eine Transformationsgruppe $[F,G]$ gegeben.
 
 Dann wirkt $G$ durch \[(p,f) \cdot g := (p \cdot g, g^{-1} \cdot f)\] von rechts auf $P \times F$. Im Folgenden bezeichnet $P \times_G F := \fak{P \times F}{G}$ den Faktorraum und
 $[p,f]$ die Äquivalenzklasse von $(p,f)$. Damit wird folgende Abbildung definiert:\[\pi_{\times_G} \colon P \times_G F \to B, \ [p,f] \mapsto \pi(p)\]
 
-\thmbox{lemdef}{Assoziiertes Faserbündel}{Das Tupel $(P \times_G F, \pi_{\times_G}, B)$ ist ein Faserbündel über $B$ mit typischer Faser $F$. Wir nennen es das zu $(P,\pi,B)$ und der 
+\thmbox{lemdef}{Assoziiertes Faserbündel}{Das Tupel $(P \times_G F, \pi_{\times_G}, B; F)$ ist ein Faserbündel über $B$ mit typischer Faser $F$. Wir nennen es das zu $(P,\pi,B;G)$ und der 
 Transformationsgruppe $[F,G]$ \textbf{assoziierte Faserbündel}.}
-
-\TODO{Beweis}
 
 Ist statt einer Transformationsgruppe $[F,G]$ ein Lie-Gruppen-Homomorphismus $\varphi \colon G \to F$ gegeben, so findet sich auch die Schreibweise $P \times_\varphi F$ als Alternative zu 
 $P \times_G F$.
@@ -100,27 +115,27 @@ Dann ist $(P \times_\rho V, \pi_{\times_\rho}, B)$ ein $\K$-Vektorbündel mit ty
 \thmbox{bsp}{Erweiterung und Reduktion}{Ist $H$ eine Lie-Gruppe und $[H,G]$ eine Transformationsgruppe bzw. $\varphi \colon G \to H$ ein Lie-Gruppen-Homomorphismus, so ist 
 $(P \times_G H, \pi_{\times_G}, B)$ bzw $(P \times_\varphi H, \pi_{\times_\varphi}, B)$ ein $H$-Hauptfaserbündel.
 \begin{itemize}
- \item Gilt $H \unrhd G$ und $\varphi$ ist eine Einbettung, so wird auch von einer ($\varphi$-)\textbf{Erweiterung} der Strukturgruppe gesprochen.
+ \item Gilt $H \unrhd G$ und $\varphi$ ist eine Einbettung, so wird auch von einer ($\varphi$-)\textbf{Er\-wei\-ter\-ung} der Strukturgruppe gesprochen.
  \item Gilt umgekehrt $H \unlhd G$, so wird auch von einer ($\varphi$-)\textbf{Reduktion} der Strukturgruppe gesprochen. Dies kann besonders hilfreich sein, wenn Eigenschaften der Strukturgruppe
- verschärft werden sollen. Beispielweise gibt es Aussagen, die eine Kompakte Strukturgruppe voraussetzen. Dies kann ggf. über eine solche Reduktion erreicht werden.
+ verschärft werden sollen. Beispielweise gibt es Aussagen, die eine kompakte Strukturgruppe voraussetzen. Dies kann ggf. über eine solche Reduktion erreicht werden.
 \end{itemize}}
 
-\subsubsection{Rahmenbündel}
+\subsection{Rahmenbündel}
 
-Sei $(V,\pi,B)$ ein $\K$-Vektorbündel von Rang $n$. Dann ist für alle $b \in B$ die Faser $V_b$ ein $n$-dimensionaler Vektorraum.
+Sei $(V,\pi,B)$ ein $\K$-Vektorbündel von Rang $n$. Dann ist für alle $b \in B$ die Faser $V_b$ ein $n$-dimensionaler Vektorraum. Setze nun 
+\[\mathfrak{B}_b := \{ (b_1, \dots , b_n) \in V_b \ | \ (b_1, \dots, b_n) \text{ ist eine (geordnete) Basis von } V_b \}.\]
+Dann wirkt $GL(n,\K)$ durch \[ (b_1, \dots, b_n) \cdot A := \left( \sum_{i=1}^n A_{i1} b_i, \dots , \sum_{i=1}^n A_{in}b_i \right) \] frei und transitiv von rechts auf $\mathfrak{B}_b$.
+Damit wird $(\mathfrak{B}, \tilde \pi, B)$ mit $\mathfrak{B} := \mathfrak{B}_V := \bigcup_{b \in B} \mathfrak{B}_b$ und $\tilde \pi \colon \mathfrak{B} \to B$, sodass 
+$\tilde \pi|_{\mathfrak{B}_b} \equiv b$ gilt, zu
+einem $GL(n,\K)$-Haupt\-faser\-bündel.
 
-Setze nun $\mathfrak{B}_b := \{ (b_1, \dots , b_n) \in V_b \ | \ (b_1, \dots, b_n) \text{ ist eine (geordnete) Basis von } V_b \}$
-Dann wirkt $GL(n,\K)$ durch \[ (b_1, \dots, b_n) \cdot A := \left( \sum_{i=1}^n A_{i1} b_i, \dots , \sum_{i=1}^n A_{in}b_n \right) \] frei und transitiv von rechts auf $\mathfrak{B}_b$.
-Damit wird $(\mathfrak{B}, \tilde \pi, B)$ mit $\mathfrak{B} := \mathfrak{B}_V := \bigcup_{b \in B} \mathfrak{B}_b$ und $\tilde \pi \colon \mathfrak{B} \to B$, sodass $\tilde \pi|_{\mathfrak{B}_b} \equiv b$ gilt, zu
-einem $GL(n,\K)$-Hauptfaserbündel.
-
-\thmbox{defn}{Rahmenbündel}{Sei $B$ eine $n$-dimensionale glatte Mannigfaltigkeit und $V := TB \to B$ das Tangentialbündel. Dann heißt das durch obige Konstruktion gewonnen $GL(n,\K)$-
+\thmbox{defn}{Rahmenbündel}{Sei $B$ eine $n$-dimensionale glatte Mannigfaltigkeit und $V := TB \to B$ das Tangentialbündel. Dann heißt das durch obige Konstruktion gewonne $GL(n,\K)$-
 Hauptfaserbündel $(\mathfrak{B}_V, \tilde \pi, B)$ \textbf{Rahmenbündel} von $B$.
 
-Ist $(B,g)$ eine Riemansche Mannigfaltigkeit und sind in der Konstruktion die $\mathfrak{B}_b$ zusätzlich orthonormal gewählt, so heißt das entstehende $O(n)$-Hauptfaserbündel \textbf{orthonormales
+Ist $(B,g)$ eine Riemannsche Mannigfaltigkeit und sind in der Konstruktion die $\mathfrak{B}_b$ zusätzlich orthonormal gewählt, so heißt das entstehende $O(n)$-Haupt\-faser\-bündel \textbf{orthonormales
 Rahmenbündel}.}
 
-Natürlicherweise ergeben sich folgende $G$-Hauptfaserbündel als Bündel (geordneter) Basen:
+Natürlicherweise ergeben sich folgende $G$-Hauptfaserbündel als Bündel (geordneter) Basen \cite{baer}:
 
 \begin{table}[hbt]
 \centering
@@ -135,17 +150,19 @@ Natürlicherweise ergeben sich folgende $G$-Hauptfaserbündel als Bündel (geord
   \end{tabular}
 \end{table}
 
+\subsection{Beispiele}
+
 Im Folgenden werden noch einige weitere Beispiele für Hauptfaserbündel gegeben:
 
 \thmbox{bsp}{Triviales Hauptfaserbündel}{Für alle Differenzierbaren Mannigfaltigkeiten $B$ und Lie-Gruppen $G$ ist $(B \times G, \pi_B, B; G)$ das triviale $G$-Hauptfaserbündel.}
 
-\thmbox{bsp}{Homogenes Bündel}{Sei $G$ eine Lie-Gruppe, $H \subset G$ eine abgeschlossene Untergruppe, $\fak{G}{H}$ der zugehörige homogene Raum und $\pi \colon G \to \fak{G}{H}$ die Projektion auf den Faktorraum.
-Dann ist $(G, \pi, \fak{G}{H}; H)$ ein $H$-Hauptfaserbündel, genannt das homogene Bündel.}
+\thmbox{bsp}{Homogenes Bündel}{Sei $G$ eine Lie-Gruppe, $H \subset G$ eine abgeschlossene Untergruppe, $\fak{G}{H}$ der zugehörige homogene Raum und $\pi \colon G \to \fak{G}{H}$ die Projektion auf den
+Faktorraum. Dann ist $(G, \pi, \fak{G}{H}; H)$ ein $H$-Hauptfaserbündel, genannt das homogene Bündel. Den Beweis führt \textcite{baum}.}
 
-\thmbox{bsp}{Steifel- und Grassmann-Mannigfaltigkeit}{Für $\K \in \{ \R, \C, \mathbb{H} \}$ \footnote{$\mathbb{H}$ bezeichnet den Quaternionenkörper.} bezeichne $<\cdot,\cdot>_{\K^n}$ das 
+\thmbox{bsp}{Stiefel- und Grassmann-Mannigfaltigkeit}{Für $\K \in \{ \R, \C, \mathbb{H} \}$ \footnote{$\mathbb{H}$ bezeichnet den Quaternionenkörper.} bezeichne $<\cdot,\cdot>_{\K^n}$ das 
 Standard-Skalarprodukt.
 
-Unter der Stiefelmannigfaltigkeit $V_k(\K^n)$ versteht man die Menge aller $k$-Tupel von orthonormalen Vektoren im $\K^n$:
+Unter der Stiefelmannigfaltigkeit $V_k(\K^n)$ versteht man die Menge aller $k$-Tupel von orthonormalen Vektoren im $\K^n$
 \[ V_k(\K^n) := \{ (v1, \dots, v_k) \ | \ v_i \in \K^n, \ <v_i,v_j>_{\K^n} = \delta_{ij} \footnotemark \}\] \footnotetext{$\delta_{ij} \colon \N \times \N \to \{0,1\}$ mit $\delta_{ij} = 1 
 \Leftrightarrow i = j$ bezeichnet das Kronecker-Delta.} versehen mit einer Mannigfaltigkeitsstruktur.
 
@@ -154,13 +171,15 @@ Unter der Grassmann-Mannigfaltigkeit $G_k(\K^n)$ versteht man die Menge aller $k
 Durch
 \[ \pi \colon V_k(\K^n) \to G_k(\K^n), (v_1, \dots, v_k) \mapsto span(v_1, \dots, v_k) \]
 wird $\left(V_k(\K^n), \pi, G_k(\K^n)\right)$ zu einem $\mathfrak{G}$-Hauptfaserbündel. Die typische Faser $\mathfrak{G}$ ist dabei abhängig vom Körper $\K$:
-\begin{table}[h]
+
+\begin{table}[!h]
 \centering
   \begin{tabular}{c|c}
     $\K$ & $\mathfrak{G}$\\
     \hline
-    $\R$ & $O(n)$\\
+    $\R$ & $SO(n)$\\
     $\C$ & $U(n)$\\
     $\mathbb{H}$ & $Sp(n)$\\
   \end{tabular}
-\end{table}}
+\end{table}
+\textcite{grasstie} haben hierzu einen	 ausführlichen Artikel ver\-öf\-fent\-licht.}

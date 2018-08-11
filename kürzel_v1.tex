@@ -7,6 +7,8 @@
 %\usepackage{textcomp}
 \usepackage[german]{babel}		% english or german
 
+\hyphenation{Fa-ser-bun-del Haupt-fa-ser-bun-del}
+
 % references
 \usepackage[backend=biber,isbn=false,doi=false]{biblatex}
 \addbibresource{template.bib}
@@ -33,6 +35,8 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{scrextend}
+\usepackage[bottom, marginal]{footmisc}
+\usepackage{wrapfig}
 
 \let\proof\relax
 \let\endproof\relax
@@ -50,6 +54,7 @@
 \spnewtheorem{lem}[thm]{Lemma}{\bfseries}{\itshape}
 \spnewtheorem{ann}{Annahme}{\bfseries}{\itshape}
 \spnewtheorem{flg}[thm]{Folgerung}{\bfseries}{\itshape}
+\spnewtheorem{srbw}[thm]{Schreibweise}{\bfseries}{\itshape}
 
 \newcommand{\thmbox}[3]{
   \begin{#1}
@@ -58,7 +63,7 @@
   \end{#1}
 }
 
-\newcommand{\difman}{Differenzierbare Mannigfaltigkeit}
+\newcommand{\difman}{differenzierbare Mannigfaltigkeit}
 \newcommand{\difmans}{\difman en}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
@@ -144,15 +149,15 @@
 %\chapter{Bündeltheorie}
 
 \section*{Einleitung}
-Dieses Dokument stellt eine Verschriftlichung meines Seminarvortrages in \textit{Differenzierbare Mannigfaltigkeiten} dar. Der Vortrag und dieses Dokument folgen weiterstgehend dem Aufbau des 
+Dieses Dokument stellt eine Verschriftlichung meines Seminarvortrages in \textit{Differenzierbare Mannigfaltigkeiten} dar. Der Vortrag und dieses Dokument folgen weitestgehend dem Aufbau des 
 Vorlesungsskriptes \textit{Gauge Theory} von \textcite{baer}. 
-Nachdem der vorangegangene Vortrag Lie-Gruppen und -Algebren sowie Vektorfelder und adjungierte Darstellungen zum Thema hatte sollen hier unterschiedliche Bündel eingeführt werden. 
-Beginnend mit Faserbündeln werden nacheinander Vektorbündel, Hauptfaserbündel, assoziierte Bündel sowie Rahmenbündel eingeführt und einige Eigenschaften festgehalten und Beispiele vorgestellt.
-Auf Grund des geforderten Umfanges werde ich auf eigene Beweisführungen verzichten und verweise auf Quellen in denen die entsprechenden Beweise geführt wurden.
+Nachdem der vorangegangene Vortrag Lie-Gruppen und -Algebren sowie Vektorfelder und adjungierte Darstellungen zum Thema hatte, sollen hier unterschiedliche Bündelstrukturen eingeführt werden. 
+Beginnend mit Faserbündeln werden nacheinander Vektorbündel, Hauptfaserbündel, assoziierte Bündel sowie Rahmenbündel eingeführt, einige Eigenschaften festgehalten und Beispiele vorgestellt.
+Auf Grund des geforderten Umfanges werde ich auf eigene Beweisführungen verzichten und verweise auf Quellen, in denen die entsprechenden Beweise geführt wurden.
 
 \section*{Wiederholung}
 
-\thmbox{defn}{Lie-Gruppe}{Eine \difman \ $G$, die gleichzeitig eine Gruppenstruktur aufweist wird \textbf{Lie-Gruppe} gennant, falls die Abbildung
+\thmbox{defn}{Lie-Gruppe}{Eine \difman \ $G$, die gleichzeitig eine Gruppenstruktur aufweist, wird \textbf{Lie-Gruppe} gennant, falls die Abbildungen
 \begin{align*}
   G \times G \to G, &(g_1,g_2) \mapsto g_1 \cdot g_2 \text{ und}\\
   G \to G,          & g \mapsto g^{-1}
@@ -160,6 +165,8 @@ Auf Grund des geforderten Umfanges werde ich auf eigene Beweisführungen verzich
 glatt sind.}
 
 \thmbox{defn}{Darstellung}{Seien $V$ ein endlich-dimensionaler $\K$-Vektorraum und $G$ eine Lie-Gruppe. Ein Lie-Gruppen-Homomorphismus $\rho \colon G \to Aut(V)$ heißt \textbf{Darstellung} von G.}
+
+\thmbox{srbw}{Projektion}{Seien $M$, $N$ Mengen. Dann bezeichnen $\pi_M \colon M \times N \to M$ und $\pi_N \colon M \times N \to N$ die Projektionen auf die erste bzw. zweite Komponente.}
 
 \clearpage
 
